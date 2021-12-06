@@ -19,10 +19,8 @@ namespace RatesAPI.Core.HttpClient
         public async Task<FixerIOResponse> GetLatestRatesAsync()
         {
             FixerIOResponse Rates = new FixerIOResponse();
-            var request = new HttpRequestMessage(HttpMethod.Get,
+            var request = new HttpRequestMessage(HttpMethod.Post,
             "http://data.fixer.io/api/latest?access_key=b3d22af562d1d7c1e74ca146884fc221&format=1");
-            //request.Headers.Add("Accept", "application/vnd.github.v3+json");
-            //request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
 
             var client = _clientFactory.CreateClient();
 

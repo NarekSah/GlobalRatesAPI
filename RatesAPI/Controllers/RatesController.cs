@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RatesAPI.Core;
 using RatesAPI.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RatesAPI.Controllers
@@ -26,7 +22,7 @@ namespace RatesAPI.Controllers
         public async Task<FixerIOResponse> Get()
         {
             return await _ratesOperations.GetLatestRatesAsync();
-        }
+        }       
 
     }
 }

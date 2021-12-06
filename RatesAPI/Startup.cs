@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RatesAPI.Core.HttpClient;
 using RatesAPI.Core.Interfaces;
 using RatesAPI.Core.Services;
+using RatesAPI.Core.SoapClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +29,7 @@ namespace RatesAPI
         {
             services.AddScoped<IRatesOperations, RatesOperations>();
             services.AddScoped<IFixerIOClient, FixerIOClient>();
+            services.AddScoped<ICBACLient, CBASoapClient>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
