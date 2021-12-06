@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RatesAPI.Core;
+using RatesAPI.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,18 @@ namespace RatesAPI.Controllers
     public class RatesController : ControllerBase
     {
         private readonly ILogger<RatesController> _logger;
-        public RatesController(ILogger<RatesController> logger)
+        private readonly IRatesOperations _ratesOperations;
+        public RatesController(ILogger<RatesController> logger, IRatesOperations ratesOperations)
         {
             _logger = logger;
+            _ratesOperations = ratesOperations;
         }
 
+        [HttpGet]
+        public async Task<FixerIOResponse> Get()
+        {
+            return await _ratesOperations.GetLatestRatesAsync();
+        }
 
     }
 }

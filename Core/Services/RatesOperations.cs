@@ -10,5 +10,15 @@ namespace RatesAPI.Core.Services
 {
     public class RatesOperations : IRatesOperations
     {
+        private readonly IFixerIOClient _fixerIOClient;
+
+        public RatesOperations(IFixerIOClient fixerIOClient)
+        {
+            _fixerIOClient = fixerIOClient;
+        }
+        public async Task<FixerIOResponse> GetLatestRatesAsync()
+        {
+            return await _fixerIOClient.GetLatestRatesAsync();
+        }
     }
 }
